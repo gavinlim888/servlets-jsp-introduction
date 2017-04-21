@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app version="3.1" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd">
+    <context-param>
+        <param-name>db.user</param-name>
+        <param-value>root</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.password</param-name>
+        <param-value>secret</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.url</param-name>
+        <param-value>jdbc:mysql://localhost:3306/grocerific</param-value>
+    </context-param>
+    <context-param>
+        <param-name>db.driver</param-name>
+        <param-value>com.mysql.jdbc.Driver</param-value>
+    </context-param>
+    <listener>
+        <description>ServletContextListener</description>
+        <listener-class>ph.grocerific.estore.web.GrocerificContextListener</listener-class>
+    </listener>
+    <servlet>
+        <servlet-name>TestServlet</servlet-name>
+        <servlet-class>ph.grocerific.estore.web.TestServlet</servlet-class>
+        <init-param>
+            <param-name>welcomeMessage</param-name>
+            <param-value>Welcome to Grocerific!</param-value>
+        </init-param>
+    </servlet>
+    <servlet>
+        <servlet-name>ViewProductsServlet</servlet-name>
+        <servlet-class>ph.grocerific.estore.web.ViewProductsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TestServlet</servlet-name>
+        <url-pattern>/test</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ViewProductsServlet</servlet-name>
+        <url-pattern>/products/view</url-pattern>
+    </servlet-mapping>
+    <session-config>
+        <session-timeout>
+            30
+        </session-timeout>
+    </session-config>
+</web-app>
